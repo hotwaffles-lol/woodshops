@@ -63,7 +63,7 @@ function WoodshopsView() {
     : RESELLER_DATA;
 
   const linkStyle = {
-    color:"#555", textDecoration:"none", fontSize:"10px", letterSpacing:"0.08em",
+    color:"#999", textDecoration:"none", fontSize:"10px", letterSpacing:"0.08em",
     textTransform:"uppercase", transition:"color 0.15s", whiteSpace:"nowrap",
   };
 
@@ -74,14 +74,14 @@ function WoodshopsView() {
           <a key={i} href={url} target="_blank" rel="noopener noreferrer"
             style={linkStyle}
             onMouseEnter={e => e.currentTarget.style.color="#ff3c00"}
-            onMouseLeave={e => e.currentTarget.style.color="#555"}
+            onMouseLeave={e => e.currentTarget.style.color="#999"}
           >web ↗</a>
         ))}
         {instagrams.map((url, i) => (
           <a key={i} href={url} target="_blank" rel="noopener noreferrer"
             style={linkStyle}
             onMouseEnter={e => e.currentTarget.style.color="#ff3c00"}
-            onMouseLeave={e => e.currentTarget.style.color="#555"}
+            onMouseLeave={e => e.currentTarget.style.color="#999"}
           >IG ↗</a>
         ))}
       </span>
@@ -90,7 +90,7 @@ function WoodshopsView() {
 
   const sectionLabelStyle = {
     fontSize:"9px", letterSpacing:"0.3em", textTransform:"uppercase",
-    color:"#777", fontWeight:700, marginBottom:"10px", marginTop:"32px",
+    color:"#aaa", fontWeight:700, marginBottom:"10px", marginTop:"32px",
   };
 
   const rowStyle = (i) => ({
@@ -100,20 +100,20 @@ function WoodshopsView() {
 
   const tdName = { padding:"10px 12px 10px 0", fontWeight:700, color:"#d8d0c4", fontSize:"13px" };
   const tdCountry = { padding:"10px 12px 10px 0", whiteSpace:"nowrap" };
-  const tdEst = { padding:"10px 12px 10px 0", fontSize:"11px", color:"#666", whiteSpace:"nowrap" };
+  const tdEst = { padding:"10px 12px 10px 0", fontSize:"11px", color:"#888", whiteSpace:"nowrap" };
   const tdLinks = { padding:"10px 12px 10px 0" };
-  const tdNotes = { padding:"10px 0", fontSize:"11px", color:"#888" };
+  const tdNotes = { padding:"10px 0", fontSize:"11px", color:"#bbb" };
 
   function ShopTable({ data, showEst }) {
     return (
       <table style={{ width:"100%", borderCollapse:"collapse", fontSize:"13px" }}>
         <thead>
           <tr style={{ borderBottom:"2px solid #1e1e1e" }}>
-            <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#777", whiteSpace:"nowrap" }}>Name</th>
-            <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#777", whiteSpace:"nowrap" }}>Country</th>
-            {showEst && <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#777", whiteSpace:"nowrap" }}>Est.</th>}
+            <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#aaa", whiteSpace:"nowrap" }}>Name</th>
+            <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#aaa", whiteSpace:"nowrap" }}>Country</th>
+            {showEst && <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#aaa", whiteSpace:"nowrap" }}>Est.</th>}
             <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#777" }}>Links</th>
-            <th style={{ padding:"10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#777" }}>Notes</th>
+            <th style={{ padding:"10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#aaa" }}>Notes</th>
           </tr>
         </thead>
         <tbody>
@@ -128,7 +128,7 @@ function WoodshopsView() {
               </td>
               <td style={tdCountry}>
                 <Badge label={shop.country} color={COUNTRY_COLOR[shop.country]}/>
-                {shop.location && <span style={{ marginLeft:6, fontSize:"10px", color:"#666" }}>{shop.location}</span>}
+                {shop.location && <span style={{ marginLeft:6, fontSize:"10px", color:"#888" }}>{shop.location}</span>}
               </td>
               {showEst && <td style={tdEst}>{shop.est ? `est. ${shop.est}` : <span style={{color:"#333"}}>—</span>}</td>}
               <td style={tdLinks}><Links websites={shop.websites} instagrams={shop.instagrams}/></td>
@@ -170,11 +170,11 @@ function WoodshopsView() {
 
       <div style={{ ...sectionLabelStyle, marginTop:"48px", paddingTop:"24px", borderTop:"1px solid #161616" }}>
         Resellers & Distributors — {filteredResellers.length} listed
-        <span style={{ marginLeft:10, fontWeight:400, color:"#555", letterSpacing:"0.1em", fontSize:"9px" }}>· do not manufacture their own boards</span>
+        <span style={{ marginLeft:10, fontWeight:400, color:"#888", letterSpacing:"0.1em", fontSize:"9px" }}>· do not manufacture their own boards</span>
       </div>
       <ShopTable data={filteredResellers} showEst={false}/>
 
-      <div style={{ marginTop:"32px", fontSize:"10px", color:"#555", letterSpacing:"0.1em" }}>
+      <div style={{ marginTop:"32px", fontSize:"10px", color:"#888", letterSpacing:"0.1em" }}>
         Directory data: Slap Magazine Forums · Last updated March 2024 · Community sourced
       </div>
     </div>
@@ -227,7 +227,7 @@ export default function App() {
   const thStyle = (k) => ({
     padding:"10px 12px 10px 0", textAlign:"left",
     fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700,
-    color: sortKey === k ? "#ff3c00" : "#777", cursor:"pointer", userSelect:"none",
+    color: sortKey === k ? "#ff3c00" : "#aaa", cursor:"pointer", userSelect:"none",
     whiteSpace:"nowrap", transition:"color 0.15s",
   });
 
@@ -309,9 +309,9 @@ export default function App() {
           )}
         </div>
 
-        <div style={{ fontSize:"11px", color:"#666", letterSpacing:"0.08em", marginBottom:"14px" }}>
+        <div style={{ fontSize:"11px", color:"#999", letterSpacing:"0.08em", marginBottom:"14px" }}>
           {filtered.length} brand{filtered.length !== 1 ? "s" : ""}{hasFilters && <span style={{ color:"#ff3c00" }}> — filtered</span>}
-          <span style={{ color:"#555", marginLeft:12 }}>· click rows with history for full timeline</span>
+          <span style={{ color:"#888", marginLeft:12 }}>· click rows with history for full timeline</span>
         </div>
 
         {/* Table */}
@@ -361,7 +361,7 @@ export default function App() {
                         {row.allRegions.length > 0 ? row.allRegions.map(r => <RegionBadge key={r} label={r}/>) : <span style={{color:"#333"}}>—</span>}
                       </span>
                     </td>
-                    <td style={{ padding:"12px 12px 12px 0", color:"#999", fontSize:"12px" }}>
+                    <td style={{ padding:"12px 12px 12px 0", color:"#bbb", fontSize:"12px" }}>
                       {[row.primary.yearNote, row.primary.notes].filter(Boolean).join(" · ") || <span style={{color:"#333"}}>—</span>}
                     </td>
                     <td style={{ padding:"12px 0", color:"#666", textAlign:"right" }}>
@@ -386,8 +386,8 @@ export default function App() {
                                   <td style={{ padding:"7px 12px" }}>
                                     {e.region ? <RegionBadge label={e.region}/> : <span style={{color:"#333"}}>—</span>}
                                   </td>
-                                  <td style={{ padding:"7px 12px", color:"#888", fontSize:"11px" }}>
-                                    {[e.yearNote, e.notes].filter(Boolean).join(" · ") || <span style={{color:"#444"}}>—</span>}
+                                  <td style={{ padding:"7px 12px", color:"#bbb", fontSize:"11px" }}>
+                                    {[e.yearNote, e.notes].filter(Boolean).join(" · ") || <span style={{color:"#555"}}>—</span>}
                                   </td>
                                 </tr>
                               ))}
@@ -409,13 +409,32 @@ export default function App() {
         )}
 
         {/* Footer */}
-        <div style={{ marginTop:"56px", paddingTop:"18px", borderTop:"1px solid #161616", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:8, fontSize:"10px", letterSpacing:"0.15em", textTransform:"uppercase", color:"#555" }}>
-          <span>Data: Slap Magazine Forums 2025 · Community sourced · Not official</span>
-          <a href="https://www.slapmagazine.com/index.php?topic=120409.0" target="_blank" rel="noopener noreferrer"
-            style={{ color:"#555", textDecoration:"none", transition:"color 0.15s" }}
-            onMouseEnter={e => e.currentTarget.style.color="#ff3c00"}
-            onMouseLeave={e => e.currentTarget.style.color="#555"}
-          >Source Thread ↗</a>
+        <div style={{ marginTop:"64px", paddingTop:"24px", borderTop:"1px solid #1e1e1e" }}>
+          <div style={{ display:"flex", justifyContent:"space-between", flexWrap:"wrap", gap:8, fontSize:"10px", letterSpacing:"0.15em", textTransform:"uppercase", color:"#888", marginBottom:"24px" }}>
+            <span>Data: Slap Magazine Forums · Community sourced · Not official</span>
+            <span style={{ display:"flex", gap:16 }}>
+              <a href="https://www.slapmagazine.com/index.php?topic=120409.0" target="_blank" rel="noopener noreferrer"
+                style={{ color:"#888", textDecoration:"none", transition:"color 0.15s" }}
+                onMouseEnter={e => e.currentTarget.style.color="#ff3c00"}
+                onMouseLeave={e => e.currentTarget.style.color="#888"}
+              >Source Thread ↗</a>
+              <a href="https://github.com/hotwaffles-lol/woodshops" target="_blank" rel="noopener noreferrer"
+                style={{ color:"#888", textDecoration:"none", transition:"color 0.15s" }}
+                onMouseEnter={e => e.currentTarget.style.color="#ff3c00"}
+                onMouseLeave={e => e.currentTarget.style.color="#888"}
+              >GitHub ↗</a>
+            </span>
+          </div>
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"16px 40px", maxWidth:"800px" }}>
+            <div>
+              <div style={{ fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", color:"#aaa", fontWeight:700, marginBottom:"6px" }}>Vibe coded with Claude</div>
+              <div style={{ fontSize:"11px", color:"#777", lineHeight:1.7 }}>Built through conversation with <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" style={{ color:"#888", textDecoration:"none" }} onMouseEnter={e => e.currentTarget.style.color="#ff3c00"} onMouseLeave={e => e.currentTarget.style.color="#888"}>Claude</a> (Anthropic) using Claude Code. The data scraping pipeline, UI, and most of the architectural decisions were worked out collaboratively. Functional over fancy.</div>
+            </div>
+            <div>
+              <div style={{ fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", color:"#aaa", fontWeight:700, marginBottom:"6px" }}>Disclaimer</div>
+              <div style={{ fontSize:"11px", color:"#777", lineHeight:1.7 }}>Personal hobby project. Data may be incomplete, outdated, or wrong. Nothing here is official — just a person on the internet who likes knowing where their skateboard came from.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
