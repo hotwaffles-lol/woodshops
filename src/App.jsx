@@ -101,7 +101,7 @@ function WoodshopsView() {
   const tdName = { padding:"10px 12px 10px 0", fontWeight:700, color:"#d8d0c4", fontSize:"15px" };
   const tdCountry = { padding:"10px 12px 10px 0", whiteSpace:"nowrap" };
   const tdEst = { padding:"10px 12px 10px 0", fontSize:"13px", color:"#aaa", whiteSpace:"nowrap" };
-  const tdLinks = { padding:"10px 12px 10px 0" };
+  const tdLinks = { padding:"10px 12px 10px 0", whiteSpace:"nowrap" };
   const tdNotes = { padding:"10px 0", fontSize:"13px", color:"#ccc" };
 
   function ShopTable({ data, showEst }) {
@@ -112,7 +112,7 @@ function WoodshopsView() {
             <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", fontWeight:700, color:"#ccc", whiteSpace:"nowrap" }}>Name</th>
             <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", fontWeight:700, color:"#ccc", whiteSpace:"nowrap" }}>Country</th>
             {showEst && <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", fontWeight:700, color:"#ccc", whiteSpace:"nowrap" }}>Est.</th>}
-            <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#777" }}>Links</th>
+            <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", fontWeight:700, color:"#ccc", whiteSpace:"nowrap" }}>Links</th>
             <th style={{ padding:"10px 0", textAlign:"left", fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", fontWeight:700, color:"#ccc" }}>Notes</th>
           </tr>
         </thead>
