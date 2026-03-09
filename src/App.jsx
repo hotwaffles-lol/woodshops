@@ -19,7 +19,7 @@ function Badge({ label, color }) {
   return (
     <span style={{
       display:"inline-block", padding:"2px 6px",
-      fontSize:"10px", letterSpacing:"0.07em", textTransform:"uppercase",
+      fontSize:"12px", letterSpacing:"0.07em", textTransform:"uppercase",
       border:`1px solid ${color||"#333"}`, color: color||"#666",
     }}>
       {label}
@@ -31,8 +31,8 @@ function RegionBadge({ label }) {
   return (
     <span style={{
       display:"inline-block", padding:"2px 6px",
-      fontSize:"10px", letterSpacing:"0.07em", textTransform:"uppercase",
-      border:"1px solid #555", color:"#888",
+      fontSize:"12px", letterSpacing:"0.07em", textTransform:"uppercase",
+      border:"1px solid #666", color:"#aaa",
     }}>
       {label}
     </span>
@@ -63,7 +63,7 @@ function WoodshopsView() {
     : RESELLER_DATA;
 
   const linkStyle = {
-    color:"#999", textDecoration:"none", fontSize:"10px", letterSpacing:"0.08em",
+    color:"#bbb", textDecoration:"none", fontSize:"12px", letterSpacing:"0.08em",
     textTransform:"uppercase", transition:"color 0.15s", whiteSpace:"nowrap",
   };
 
@@ -74,14 +74,14 @@ function WoodshopsView() {
           <a key={i} href={url} target="_blank" rel="noopener noreferrer"
             style={linkStyle}
             onMouseEnter={e => e.currentTarget.style.color="#ff3c00"}
-            onMouseLeave={e => e.currentTarget.style.color="#999"}
+            onMouseLeave={e => e.currentTarget.style.color="#bbb"}
           >web ↗</a>
         ))}
         {instagrams.map((url, i) => (
           <a key={i} href={url} target="_blank" rel="noopener noreferrer"
             style={linkStyle}
             onMouseEnter={e => e.currentTarget.style.color="#ff3c00"}
-            onMouseLeave={e => e.currentTarget.style.color="#999"}
+            onMouseLeave={e => e.currentTarget.style.color="#bbb"}
           >IG ↗</a>
         ))}
       </span>
@@ -89,8 +89,8 @@ function WoodshopsView() {
   }
 
   const sectionLabelStyle = {
-    fontSize:"9px", letterSpacing:"0.3em", textTransform:"uppercase",
-    color:"#aaa", fontWeight:700, marginBottom:"10px", marginTop:"32px",
+    fontSize:"11px", letterSpacing:"0.2em", textTransform:"uppercase",
+    color:"#ccc", fontWeight:700, marginBottom:"10px", marginTop:"32px",
   };
 
   const rowStyle = (i) => ({
@@ -98,27 +98,27 @@ function WoodshopsView() {
     background: i % 2 === 0 ? "transparent" : "#0e0e0e",
   });
 
-  const tdName = { padding:"10px 12px 10px 0", fontWeight:700, color:"#d8d0c4", fontSize:"13px" };
+  const tdName = { padding:"10px 12px 10px 0", fontWeight:700, color:"#d8d0c4", fontSize:"15px" };
   const tdCountry = { padding:"10px 12px 10px 0", whiteSpace:"nowrap" };
-  const tdEst = { padding:"10px 12px 10px 0", fontSize:"11px", color:"#888", whiteSpace:"nowrap" };
+  const tdEst = { padding:"10px 12px 10px 0", fontSize:"13px", color:"#aaa", whiteSpace:"nowrap" };
   const tdLinks = { padding:"10px 12px 10px 0" };
-  const tdNotes = { padding:"10px 0", fontSize:"11px", color:"#bbb" };
+  const tdNotes = { padding:"10px 0", fontSize:"13px", color:"#ccc" };
 
   function ShopTable({ data, showEst }) {
     return (
-      <table style={{ width:"100%", borderCollapse:"collapse", fontSize:"13px" }}>
+      <table style={{ width:"100%", borderCollapse:"collapse", fontSize:"15px" }}>
         <thead>
           <tr style={{ borderBottom:"2px solid #1e1e1e" }}>
-            <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#aaa", whiteSpace:"nowrap" }}>Name</th>
-            <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#aaa", whiteSpace:"nowrap" }}>Country</th>
-            {showEst && <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#aaa", whiteSpace:"nowrap" }}>Est.</th>}
+            <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", fontWeight:700, color:"#ccc", whiteSpace:"nowrap" }}>Name</th>
+            <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", fontWeight:700, color:"#ccc", whiteSpace:"nowrap" }}>Country</th>
+            {showEst && <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", fontWeight:700, color:"#ccc", whiteSpace:"nowrap" }}>Est.</th>}
             <th style={{ padding:"10px 12px 10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#777" }}>Links</th>
-            <th style={{ padding:"10px 0", textAlign:"left", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700, color:"#aaa" }}>Notes</th>
+            <th style={{ padding:"10px 0", textAlign:"left", fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", fontWeight:700, color:"#ccc" }}>Notes</th>
           </tr>
         </thead>
         <tbody>
           {data.length === 0 && (
-            <tr><td colSpan={showEst ? 5 : 4} style={{ padding:"32px 0", textAlign:"center", color:"#555", fontSize:"12px" }}>No results.</td></tr>
+            <tr><td colSpan={showEst ? 5 : 4} style={{ padding:"32px 0", textAlign:"center", color:"#888", fontSize:"14px" }}>No results.</td></tr>
           )}
           {data.map((shop, i) => (
             <tr key={i} style={rowStyle(i)}>
@@ -128,7 +128,7 @@ function WoodshopsView() {
               </td>
               <td style={tdCountry}>
                 <Badge label={shop.country} color={COUNTRY_COLOR[shop.country]}/>
-                {shop.location && <span style={{ marginLeft:6, fontSize:"10px", color:"#888" }}>{shop.location}</span>}
+                {shop.location && <span style={{ marginLeft:6, fontSize:"12px", color:"#aaa" }}>{shop.location}</span>}
               </td>
               {showEst && <td style={tdEst}>{shop.est ? `est. ${shop.est}` : <span style={{color:"#333"}}>—</span>}</td>}
               <td style={tdLinks}><Links websites={shop.websites} instagrams={shop.instagrams}/></td>
@@ -147,8 +147,8 @@ function WoodshopsView() {
         <select value={wsCountryFilter} onChange={e => setWsCountryFilter(e.target.value)}
           style={{
             background:"#141414", border:`1px solid ${wsCountryFilter ? "#ff3c00" : "#222"}`,
-            color: wsCountryFilter ? "#ddd5c8" : "#777",
-            padding:"10px 28px 10px 11px", fontSize:"12px", fontFamily:"inherit",
+            color: wsCountryFilter ? "#ddd5c8" : "#aaa",
+            padding:"10px 28px 10px 11px", fontSize:"14px", fontFamily:"inherit",
             outline:"none", cursor:"pointer", appearance:"none", flex:"0 0 auto",
             backgroundImage:`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 9 9'%3E%3Cpath d='M1.5 3l3 3 3-3' stroke='%23777' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
             backgroundRepeat:"no-repeat", backgroundPosition:"right 9px center",
@@ -158,9 +158,9 @@ function WoodshopsView() {
         </select>
         {wsCountryFilter && (
           <button onClick={() => setWsCountryFilter("")}
-            style={{ background:"none", border:"1px solid #2a2a2a", color:"#777", padding:"10px 14px", fontSize:"10px", fontFamily:"inherit", cursor:"pointer", letterSpacing:"0.12em", textTransform:"uppercase", transition:"all 0.15s" }}
+            style={{ background:"none", border:"1px solid #2a2a2a", color:"#aaa", padding:"10px 14px", fontSize:"12px", fontFamily:"inherit", cursor:"pointer", letterSpacing:"0.12em", textTransform:"uppercase", transition:"all 0.15s" }}
             onMouseEnter={e => { e.currentTarget.style.borderColor="#ff3c00"; e.currentTarget.style.color="#ff3c00"; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor="#2a2a2a"; e.currentTarget.style.color="#777"; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor="#2a2a2a"; e.currentTarget.style.color="#aaa"; }}
           >Clear ×</button>
         )}
       </div>
@@ -170,11 +170,11 @@ function WoodshopsView() {
 
       <div style={{ ...sectionLabelStyle, marginTop:"48px", paddingTop:"24px", borderTop:"1px solid #161616" }}>
         Resellers & Distributors — {filteredResellers.length} listed
-        <span style={{ marginLeft:10, fontWeight:400, color:"#888", letterSpacing:"0.1em", fontSize:"9px" }}>· do not manufacture their own boards</span>
+        <span style={{ marginLeft:10, fontWeight:400, color:"#aaa", letterSpacing:"0.1em", fontSize:"11px" }}>· do not manufacture their own boards</span>
       </div>
       <ShopTable data={filteredResellers} showEst={false}/>
 
-      <div style={{ marginTop:"32px", fontSize:"10px", color:"#888", letterSpacing:"0.1em" }}>
+      <div style={{ marginTop:"32px", fontSize:"12px", color:"#aaa", letterSpacing:"0.1em" }}>
         Directory data: Slap Magazine Forums · Last updated March 2024 · Community sourced
       </div>
     </div>
@@ -226,15 +226,15 @@ export default function App() {
 
   const thStyle = (k) => ({
     padding:"10px 12px 10px 0", textAlign:"left",
-    fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", fontWeight:700,
+    fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", fontWeight:700,
     color: sortKey === k ? "#ff3c00" : "#aaa", cursor:"pointer", userSelect:"none",
     whiteSpace:"nowrap", transition:"color 0.15s",
   });
 
   const selectStyle = (active) => ({
     background:"#141414", border:`1px solid ${active ? "#ff3c00" : "#222"}`,
-    color: active ? "#ddd5c8" : "#777",
-    padding:"10px 28px 10px 11px", fontSize:"12px", fontFamily:"inherit",
+    color: active ? "#ddd5c8" : "#aaa",
+    padding:"10px 28px 10px 11px", fontSize:"14px", fontFamily:"inherit",
     outline:"none", cursor:"pointer", appearance:"none", flex:"1 1 140px",
     backgroundImage:`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 9 9'%3E%3Cpath d='M1.5 3l3 3 3-3' stroke='%23777' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
     backgroundRepeat:"no-repeat", backgroundPosition:"right 9px center",
@@ -251,13 +251,13 @@ export default function App() {
 
         {/* Header */}
         <div style={{ marginBottom:"36px" }}>
-          <div style={{ fontSize:"10px", letterSpacing:"0.4em", color:"#666", textTransform:"uppercase", marginBottom:"10px" }}>
+          <div style={{ fontSize:"12px", letterSpacing:"0.3em", color:"#999", textTransform:"uppercase", marginBottom:"10px" }}>
             Slap Magazine Forums · 2025 Edition
           </div>
           <h1 style={{ margin:0, lineHeight:0.88, textTransform:"uppercase", fontWeight:900, letterSpacing:"-0.03em", fontSize:"clamp(38px,8vw,76px)" }}>
             Who Makes<br/><span style={{ color:"#ff3c00" }}>Your Deck?</span>
           </h1>
-          <div style={{ marginTop:"14px", display:"flex", gap:"20px", flexWrap:"wrap", fontSize:"11px", color:"#666", letterSpacing:"0.1em" }}>
+          <div style={{ marginTop:"14px", display:"flex", gap:"20px", flexWrap:"wrap", fontSize:"13px", color:"#999", letterSpacing:"0.1em" }}>
             <span><span style={{ color:"#ff3c00", fontWeight:700 }}>{RAW_DATA.length}</span> entries</span>
             <span><span style={{ color:"#ff3c00", fontWeight:700 }}>{Object.keys(brandMap).length}</span> brands</span>
             <span><span style={{ color:"#ff3c00", fontWeight:700 }}>{ALL_MANUFACTURERS.length}</span> manufacturers</span>
@@ -269,8 +269,8 @@ export default function App() {
           {[["brands","Brands"],["woodshops","Woodshops"]].map(([v,label]) => (
             <button key={v} onClick={() => setView(v)} style={{
               background:"none", border:"none", borderBottom: view===v ? "2px solid #ff3c00" : "2px solid transparent",
-              color: view===v ? "#ff3c00" : "#555", padding:"8px 18px 10px", fontSize:"10px",
-              letterSpacing:"0.25em", textTransform:"uppercase", fontFamily:"inherit",
+              color: view===v ? "#ff3c00" : "#999", padding:"8px 18px 10px", fontSize:"12px",
+              letterSpacing:"0.2em", textTransform:"uppercase", fontFamily:"inherit",
               cursor:"pointer", fontWeight:700, transition:"all 0.15s", marginBottom:"-1px",
             }}>{label}</button>
           ))}
@@ -282,11 +282,11 @@ export default function App() {
           <div style={{ flex:"1 1 200px", position:"relative" }}>
             <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search brand..."
               style={{ width:"100%", boxSizing:"border-box", background:"#141414", border:"1px solid #222",
-                color:"#d8d0c4", padding:"10px 11px", fontSize:"13px", fontFamily:"inherit", outline:"none", transition:"border-color 0.15s" }}
+                color:"#d8d0c4", padding:"10px 11px", fontSize:"15px", fontFamily:"inherit", outline:"none", transition:"border-color 0.15s" }}
               onFocus={e => e.target.style.borderColor="#ff3c00"}
               onBlur={e => e.target.style.borderColor="#222"}
             />
-            {search && <button onClick={() => setSearch("")} style={{ position:"absolute", right:"9px", top:"50%", transform:"translateY(-50%)", background:"none", border:"none", color:"#555", cursor:"pointer", fontSize:"15px" }}>×</button>}
+            {search && <button onClick={() => setSearch("")} style={{ position:"absolute", right:"9px", top:"50%", transform:"translateY(-50%)", background:"none", border:"none", color:"#999", cursor:"pointer", fontSize:"15px" }}>×</button>}
           </div>
           <select value={mfgFilter} onChange={e => setMfgFilter(e.target.value)} style={selectStyle(!!mfgFilter)}>
             <option value="">All Manufacturers</option>
@@ -302,21 +302,21 @@ export default function App() {
           </select>
           {hasFilters && (
             <button onClick={() => { setSearch(""); setMfgFilter(""); setCountryFilter(""); setRegionFilter(""); }}
-              style={{ background:"none", border:"1px solid #2a2a2a", color:"#777", padding:"10px 14px", fontSize:"10px", fontFamily:"inherit", cursor:"pointer", letterSpacing:"0.12em", textTransform:"uppercase", transition:"all 0.15s", whiteSpace:"nowrap" }}
+              style={{ background:"none", border:"1px solid #2a2a2a", color:"#aaa", padding:"10px 14px", fontSize:"12px", fontFamily:"inherit", cursor:"pointer", letterSpacing:"0.12em", textTransform:"uppercase", transition:"all 0.15s", whiteSpace:"nowrap" }}
               onMouseEnter={e => { e.currentTarget.style.borderColor="#ff3c00"; e.currentTarget.style.color="#ff3c00"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor="#2a2a2a"; e.currentTarget.style.color="#777"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor="#2a2a2a"; e.currentTarget.style.color="#aaa"; }}
             >Clear ×</button>
           )}
         </div>
 
-        <div style={{ fontSize:"11px", color:"#999", letterSpacing:"0.08em", marginBottom:"14px" }}>
+        <div style={{ fontSize:"13px", color:"#bbb", letterSpacing:"0.08em", marginBottom:"14px" }}>
           {filtered.length} brand{filtered.length !== 1 ? "s" : ""}{hasFilters && <span style={{ color:"#ff3c00" }}> — filtered</span>}
-          <span style={{ color:"#888", marginLeft:12 }}>· click rows with history for full timeline</span>
+          <span style={{ color:"#aaa", marginLeft:12 }}>· click rows with history for full timeline</span>
         </div>
 
         {/* Table */}
         <div style={{ overflowX:"auto" }}>
-          <table style={{ width:"100%", borderCollapse:"collapse", fontSize:"13px" }}>
+          <table style={{ width:"100%", borderCollapse:"collapse", fontSize:"15px" }}>
             <thead>
               <tr style={{ borderBottom:"2px solid #1e1e1e" }}>
                 <th onClick={() => sort("brand")} style={thStyle("brand")}>
@@ -335,7 +335,7 @@ export default function App() {
             </thead>
             <tbody>
               {filtered.length === 0 && (
-                <tr><td colSpan={6} style={{ padding:"48px 0", textAlign:"center", color:"#555" }}>No results.</td></tr>
+                <tr><td colSpan={6} style={{ padding:"48px 0", textAlign:"center", color:"#888" }}>No results.</td></tr>
               )}
               {filtered.map((row, i) => {
                 const isExp = expanded === row.brand;
@@ -350,7 +350,7 @@ export default function App() {
                   >
                     <td style={{ padding:"12px 12px 12px 0", fontWeight:700, color:"#d8d0c4" }}>
                       {row.brand}
-                      {hasHist && <span style={{ marginLeft:5, fontSize:"9px", color:"#666" }}>+{row.entries.length-1}</span>}
+                      {hasHist && <span style={{ marginLeft:5, fontSize:"11px", color:"#999" }}>+{row.entries.length-1}</span>}
                     </td>
                     <td style={{ padding:"12px 12px 12px 0", color:"#ff3c00", fontWeight:600 }}>{row.primary.manufacturer}</td>
                     <td style={{ padding:"12px 12px 12px 0" }}>
@@ -361,10 +361,10 @@ export default function App() {
                         {row.allRegions.length > 0 ? row.allRegions.map(r => <RegionBadge key={r} label={r}/>) : <span style={{color:"#333"}}>—</span>}
                       </span>
                     </td>
-                    <td style={{ padding:"12px 12px 12px 0", color:"#bbb", fontSize:"12px" }}>
+                    <td style={{ padding:"12px 12px 12px 0", color:"#bbb", fontSize:"14px" }}>
                       {[row.primary.yearNote, row.primary.notes].filter(Boolean).join(" · ") || <span style={{color:"#333"}}>—</span>}
                     </td>
-                    <td style={{ padding:"12px 0", color:"#666", textAlign:"right" }}>
+                    <td style={{ padding:"12px 0", color:"#999", textAlign:"right" }}>
                       {hasHist && <Chevron up={isExp}/>}
                     </td>
                   </tr>,
@@ -372,10 +372,10 @@ export default function App() {
                     <tr key={`${row.brand}-exp`}>
                       <td colSpan={6} style={{ background:"#120e00", borderBottom:"1px solid #161616", padding:0 }}>
                         <div style={{ borderLeft:"2px solid #ff3c00" }}>
-                          <div style={{ padding:"6px 12px 8px 14px", fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", color:"#777", fontWeight:700 }}>
+                          <div style={{ padding:"6px 12px 8px 14px", fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", color:"#aaa", fontWeight:700 }}>
                             Full History — {row.entries.length} entries
                           </div>
-                          <table style={{ width:"100%", borderCollapse:"collapse", fontSize:"12px" }}>
+                          <table style={{ width:"100%", borderCollapse:"collapse", fontSize:"14px" }}>
                             <tbody>
                               {row.entries.map((e, ei) => (
                                 <tr key={ei} style={{ borderTop:"1px solid #1a1000" }}>
@@ -386,7 +386,7 @@ export default function App() {
                                   <td style={{ padding:"7px 12px" }}>
                                     {e.region ? <RegionBadge label={e.region}/> : <span style={{color:"#333"}}>—</span>}
                                   </td>
-                                  <td style={{ padding:"7px 12px", color:"#bbb", fontSize:"11px" }}>
+                                  <td style={{ padding:"7px 12px", color:"#bbb", fontSize:"13px" }}>
                                     {[e.yearNote, e.notes].filter(Boolean).join(" · ") || <span style={{color:"#555"}}>—</span>}
                                   </td>
                                 </tr>
@@ -410,29 +410,29 @@ export default function App() {
 
         {/* Footer */}
         <div style={{ marginTop:"64px", paddingTop:"24px", borderTop:"1px solid #1e1e1e" }}>
-          <div style={{ display:"flex", justifyContent:"space-between", flexWrap:"wrap", gap:8, fontSize:"10px", letterSpacing:"0.15em", textTransform:"uppercase", color:"#888", marginBottom:"24px" }}>
+          <div style={{ display:"flex", justifyContent:"space-between", flexWrap:"wrap", gap:8, fontSize:"12px", letterSpacing:"0.12em", textTransform:"uppercase", color:"#aaa", marginBottom:"24px" }}>
             <span>Data: Slap Magazine Forums · Community sourced · Not official</span>
             <span style={{ display:"flex", gap:16 }}>
               <a href="https://www.slapmagazine.com/index.php?topic=120409.0" target="_blank" rel="noopener noreferrer"
-                style={{ color:"#888", textDecoration:"none", transition:"color 0.15s" }}
+                style={{ color:"#aaa", textDecoration:"none", transition:"color 0.15s" }}
                 onMouseEnter={e => e.currentTarget.style.color="#ff3c00"}
-                onMouseLeave={e => e.currentTarget.style.color="#888"}
+                onMouseLeave={e => e.currentTarget.style.color="#aaa"}
               >Source Thread ↗</a>
               <a href="https://github.com/hotwaffles-lol/woodshops" target="_blank" rel="noopener noreferrer"
-                style={{ color:"#888", textDecoration:"none", transition:"color 0.15s" }}
+                style={{ color:"#aaa", textDecoration:"none", transition:"color 0.15s" }}
                 onMouseEnter={e => e.currentTarget.style.color="#ff3c00"}
-                onMouseLeave={e => e.currentTarget.style.color="#888"}
+                onMouseLeave={e => e.currentTarget.style.color="#aaa"}
               >GitHub ↗</a>
             </span>
           </div>
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"16px 40px", maxWidth:"800px" }}>
             <div>
-              <div style={{ fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", color:"#aaa", fontWeight:700, marginBottom:"6px" }}>Vibe coded with Claude</div>
-              <div style={{ fontSize:"11px", color:"#777", lineHeight:1.7 }}>Built through conversation with <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" style={{ color:"#888", textDecoration:"none" }} onMouseEnter={e => e.currentTarget.style.color="#ff3c00"} onMouseLeave={e => e.currentTarget.style.color="#888"}>Claude</a> (Anthropic) using Claude Code. The data scraping pipeline, UI, and most of the architectural decisions were worked out collaboratively. Functional over fancy.</div>
+              <div style={{ fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", color:"#ccc", fontWeight:700, marginBottom:"6px" }}>Vibe coded with Claude</div>
+              <div style={{ fontSize:"13px", color:"#aaa", lineHeight:1.7 }}>Built through conversation with <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" style={{ color:"#888", textDecoration:"none" }} onMouseEnter={e => e.currentTarget.style.color="#ff3c00"} onMouseLeave={e => e.currentTarget.style.color="#aaa"}>Claude</a> (Anthropic) using Claude Code. The data scraping pipeline, UI, and most of the architectural decisions were worked out collaboratively. Functional over fancy.</div>
             </div>
             <div>
-              <div style={{ fontSize:"9px", letterSpacing:"0.25em", textTransform:"uppercase", color:"#aaa", fontWeight:700, marginBottom:"6px" }}>Disclaimer</div>
-              <div style={{ fontSize:"11px", color:"#777", lineHeight:1.7 }}>Personal hobby project. Data may be incomplete, outdated, or wrong. Nothing here is official — just a person on the internet who likes knowing where their skateboard came from.</div>
+              <div style={{ fontSize:"11px", letterSpacing:"0.18em", textTransform:"uppercase", color:"#ccc", fontWeight:700, marginBottom:"6px" }}>Disclaimer</div>
+              <div style={{ fontSize:"13px", color:"#aaa", lineHeight:1.7 }}>Personal hobby project. Data may be incomplete, outdated, or wrong. Nothing here is official — just a person on the internet who likes knowing where their skateboard came from.</div>
             </div>
           </div>
         </div>
