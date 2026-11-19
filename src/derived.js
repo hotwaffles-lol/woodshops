@@ -1,5 +1,5 @@
 import { RAW_DATA, WOODSHOP_DATA } from "./data.js";
-import { closedYearOf, currentLines } from "./brandStatus.js";
+import { closedYearOf, confirmedYear, currentLines, parseYearNote } from "./brandStatus.js";
 
 // Last forum page scraped into data.js. Update alongside each scrape.
 export const DATA_UPDATED = "November 2026";
@@ -42,7 +42,11 @@ function groupByBrand(entries) {
           closureNote: closed ? closureNote(line.entry.manufacturer) : null,
         };
       }),
-      earlier,
+      earlier: earlier.map((entry) => ({
+        entry,
+        region: entry.region,
+        year: parseYearNote(entry.yearNote),
+      })),
       manufacturers: uniqueSorted(lines.map((l) => l.entry.manufacturer)),
       countries: uniqueSorted(lines.map((l) => l.entry.mfgCountry)),
       regions: uniqueSorted(lines.map((l) => l.region)),
@@ -56,3 +60,10 @@ export const BRANDS = groupByBrand(RAW_DATA);
 export const MANUFACTURERS = uniqueSorted(BRANDS.flatMap((b) => b.manufacturers));
 export const COUNTRIES = uniqueSorted(BRANDS.flatMap((b) => b.countries));
 export const REGIONS = uniqueSorted(BRANDS.flatMap((b) => b.regions));
+
+/** Every year a current woodshop was confirmed in, newest first, for the year filter. */
+export const CONFIRMED_YEARS = [
+  ...new Set(
+    BRANDS.flatMap((b) => b.lines.map((l) => confirmedYear(l.year))).filter((y) => y !== null),
+  ),
+].sort((a, b) => b - a);

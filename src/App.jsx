@@ -23,7 +23,10 @@ const VIEW_COUNTS = {
   resellers: RESELLER_DATA.length,
 };
 
-const NO_FILTERS = { search: "", manufacturer: "", country: "", region: "" };
+const RESELLERS_INTRO =
+  "Resellers and distributors sell boards made by other woodshops. They don't press their own.";
+
+const NO_FILTERS = { search: "", manufacturer: "", country: "", region: "", since: "" };
 
 export default function App() {
   const [view, setView] = useState("brands");
@@ -68,11 +71,7 @@ export default function App() {
           <ShopsView label="Woodshops" shops={WOODSHOP_DATA} showEstablished />
         )}
         {view === "resellers" && (
-          <ShopsView
-            label="Resellers"
-            shops={RESELLER_DATA}
-            intro="Resellers and distributors sell boards made by other woodshops. They don't press their own."
-          />
+          <ShopsView label="Resellers" shops={RESELLER_DATA} intro={RESELLERS_INTRO} />
         )}
       </main>
 

@@ -1,6 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { closedYearOf, currentLines, describeYear, parseYearNote } from "./brandStatus.js";
+import {
+  closedYearOf,
+  confirmedYear,
+  currentLines,
+  describeYear,
+  parseYearNote,
+} from "./brandStatus.js";
 
 const entry = (manufacturer, yearNote = null, region = null) => ({
   brand: "X",
@@ -12,11 +18,12 @@ const entry = (manufacturer, yearNote = null, region = null) => ({
 });
 
 test("parseYearNote reads starts, ends and qualifiers", () => {
-  assert.deepEqual(parseYearNote(null), { start: null, end: null, isOngoing: false, qualifier: null });
-  assert.deepEqual(parseYearNote("2021+"), { start: 2021, end: null, isOngoing: true, qualifier: null });
-  assert.deepEqual(parseYearNote("2022"), { start: 2022, end: null, isOngoing: false, qualifier: null });
-  assert.deepEqual(parseYearNote("-2020"), { start: null, end: 2020, isOngoing: false, qualifier: null });
-  assert.deepEqual(parseYearNote("-mid 2018"), { start: null, end: 2018, isOngoing: false, qualifier: "mid" });
+  const year = (start, end, isOngoing, qualifier) => ({ start, end, isOngoing, qualifier });
+  assert.deepEqual(parseYearNote(null), year(null, null, false, null));
+  assert.deepEqual(parseYearNote("2021+"), year(2021, null, true, null));
+  assert.deepEqual(parseYearNote("2022"), year(2022, null, false, null));
+  assert.deepEqual(parseYearNote("-2020"), year(null, 2020, false, null));
+  assert.deepEqual(parseYearNote("-mid 2018"), year(null, 2018, false, "mid"));
   assert.deepEqual(parseYearNote("2022 worldwide"), {
     start: 2022,
     end: null,
@@ -110,4 +117,12 @@ test("closedYearOf matches shops by name, alias or prefix", () => {
   assert.equal(closedYearOf("BBS", shops), null);
   assert.equal(closedYearOf("A Third Foot", shops), true);
   assert.equal(closedYearOf("Nobody", shops), null);
+});
+
+test("confirmedYear is the start year, or the end year once ended, or null", () => {
+  assert.equal(confirmedYear(parseYearNote("2021+")), 2021);
+  assert.equal(confirmedYear(parseYearNote("2026")), 2026);
+  assert.equal(confirmedYear(parseYearNote("2022 worldwide")), 2022);
+  assert.equal(confirmedYear(parseYearNote("-2020")), 2020);
+  assert.equal(confirmedYear(parseYearNote(null)), null);
 });

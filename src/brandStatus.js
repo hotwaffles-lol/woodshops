@@ -30,6 +30,11 @@ export function describeYear(year) {
   return year.qualifier ? `${base}, ${year.qualifier}` : base;
 }
 
+/** The year the forum last confirmed this woodshop: its start, or its end once ended. */
+export function confirmedYear(year) {
+  return year.start ?? year.end ?? null;
+}
+
 const hasEnded = (year) => year.end !== null;
 
 /** Keeps the latest-dated entries; undated ones survive only when nothing is dated. */
@@ -50,7 +55,11 @@ function latestEnded(items) {
  * and earlier entries. An ended entry is only shown when the brand has nothing active at all.
  */
 export function currentLines(history) {
-  const items = history.map((entry) => ({ entry, region: entry.region, year: parseYearNote(entry.yearNote) }));
+  const items = history.map((entry) => ({
+    entry,
+    region: entry.region,
+    year: parseYearNote(entry.yearNote),
+  }));
   const active = items.filter((i) => !hasEnded(i.year));
 
   let shown;
