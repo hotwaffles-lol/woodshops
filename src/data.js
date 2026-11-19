@@ -311,6 +311,7 @@ export const RAW_DATA = [
   { brand:"Poetic",manufacturer:"Quarter Distribution",mfgCountry:"Germany",yearNote:null,region:"EU",notes:null },
   { brand:"Poetic Collective",manufacturer:"Quarter Dist",mfgCountry:"UK",yearNote:"2023",region:null,notes:null },
   { brand:"Poetic Collective",manufacturer:"Control",mfgCountry:"Canada",yearNote:"2022",region:null,notes:null },
+  { brand:"Polar",manufacturer:"BBS",mfgCountry:"Mexico",yearNote:"2026+",region:null,notes:"Polar: manufactured by BBS, made in Mexico" },
   { brand:"Polar",manufacturer:"BBS",mfgCountry:"USA",yearNote:null,region:null,notes:null },
   { brand:"Politic",manufacturer:"South Central",mfgCountry:"USA",yearNote:null,region:null,notes:null },
   { brand:"Poolroom",manufacturer:"Clutch",mfgCountry:"USA",yearNote:null,region:"AU",notes:null },
