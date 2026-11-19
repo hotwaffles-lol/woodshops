@@ -1,0 +1,561 @@
+/* Archivo variable font (wdth 62-125%, wght 100-900), latin subset, self-hosted. OFL: fonts/OFL.txt */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("./fonts/archivo-latin-variable.woff2") format("woff2");
+}
+
+:root {
+  --concrete: #cfccc6;
+  --concrete-raised: #dad8d3;
+  --graphite: #24262a;
+  --graphite-soft: #4c4f55;
+  --rule: #b3afa8;
+  --maple: #d9b98a;
+  --maple-wash: #e6d3b3;
+
+  /* Deck veneers, kept the same in both themes. */
+  --maple-dark: #c49a62;
+  --veneer-red: #b3261e;
+  --veneer-black: #1e1e1e;
+  --veneer-blue: #1f4e9c;
+
+  --focus: #1f4e9c;
+  --closed: #9a2019;
+
+  --wide: 125%;
+  --condensed: 80%;
+  --gutter: clamp(16px, 4vw, 48px);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --concrete: #2b2c2e;
+    --concrete-raised: #343537;
+    --graphite: #e4e1db;
+    --graphite-soft: #a9a59e;
+    --rule: #47484b;
+    --maple-wash: #3d3427;
+    --focus: #8fb3f0;
+    --closed: #f08a7e;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --concrete: #2b2c2e;
+  --concrete-raised: #343537;
+  --graphite: #e4e1db;
+  --graphite-soft: #a9a59e;
+  --rule: #47484b;
+  --maple-wash: #3d3427;
+  --focus: #8fb3f0;
+  --closed: #f08a7e;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--concrete);
+  color: var(--graphite);
+  font-family: "Archivo", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(28px, 6vw, 72px) var(--gutter) 64px;
+}
+
+/* Masthead */
+
+.masthead h1 {
+  font-stretch: var(--wide);
+  font-weight: 850;
+  font-size: clamp(44px, 10vw, 112px);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+}
+
+.lede {
+  max-width: 38em;
+  margin-top: 16px;
+  font-size: clamp(17px, 2vw, 20px);
+  color: var(--graphite-soft);
+}
+
+/* Deck edge: seven flat plies */
+
+.deck-edge {
+  display: grid;
+  margin-top: clamp(20px, 3vw, 32px);
+}
+
+.ply {
+  height: 4px;
+  background: var(--ply-color);
+  transform-origin: left center;
+  animation: lay-ply 700ms cubic-bezier(0.3, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--i) * 50ms);
+}
+
+.ply-maple { --ply-color: var(--maple); }
+.ply-maple-dark { --ply-color: var(--maple-dark); }
+.ply-dye-red { --ply-color: var(--veneer-red); }
+.ply-dye-black { --ply-color: var(--veneer-black); }
+.ply-dye-blue { --ply-color: var(--veneer-blue); }
+
+@keyframes lay-ply {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ply {
+    animation: none;
+  }
+}
+
+/* Tabs */
+
+.tabs {
+  display: flex;
+  gap: clamp(16px, 4vw, 40px);
+  margin-top: clamp(28px, 4vw, 44px);
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tab {
+  padding: 10px 0;
+  font-stretch: var(--wide);
+  font-weight: 700;
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--graphite-soft);
+  border-bottom: 5px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+}
+
+.tab[aria-current="page"] {
+  color: var(--graphite);
+  border-bottom-color: var(--graphite);
+}
+
+.tab-count {
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  color: var(--graphite-soft);
+}
+
+.view-intro {
+  margin-top: 20px;
+  max-width: 40em;
+  color: var(--graphite-soft);
+}
+
+/* Filters */
+
+/* Filters, result count and column headers stick together while the rows scroll. */
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--concrete);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 16px 0 12px;
+}
+
+.field {
+  display: grid;
+  gap: 4px;
+  flex: 1 1 150px;
+  max-width: 240px;
+}
+
+.field-search {
+  flex: 2 1 220px;
+  max-width: 360px;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--graphite-soft);
+}
+
+.field input,
+.field select {
+  font: inherit;
+  font-size: 16px;
+  color: var(--graphite);
+  background: var(--concrete-raised);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 9px 10px;
+  width: 100%;
+}
+
+.field select {
+  appearance: none;
+  padding-right: 28px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 9 9'%3E%3Cpath d='M1.5 3l3 3 3-3' stroke='%23888' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.field select[data-set="true"] {
+  border-color: var(--graphite);
+  box-shadow: inset 0 0 0 1px var(--graphite);
+}
+
+.tally {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 4px 0 12px;
+  font-size: 14px;
+  color: var(--graphite-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.text-button {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--graphite);
+}
+
+/* Data grid */
+
+.grid,
+.grid-head {
+  font-stretch: var(--condensed);
+}
+
+.grid-head,
+.row-line {
+  display: grid;
+  grid-template-columns: var(--columns);
+  gap: 0 16px;
+  align-items: baseline;
+}
+
+.brand-grid {
+  --columns: minmax(8rem, 1fr) 7rem minmax(9rem, 1.1fr) 6rem 7.5rem minmax(0, 1.6fr);
+}
+
+.shop-grid {
+  --columns: minmax(10rem, 1.4fr) 6rem minmax(9rem, 1fr) minmax(0, 1.6fr);
+}
+
+.shop-grid[data-established="true"] {
+  --columns: minmax(10rem, 1.4fr) 4.5rem 6rem minmax(9rem, 1fr) minmax(0, 1.6fr);
+}
+
+.grid-head {
+  border-top: 2px solid var(--graphite);
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--graphite-soft);
+  border-bottom: 1px solid var(--rule);
+}
+
+.sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+}
+
+.sort:hover {
+  color: var(--graphite);
+}
+
+.chevron {
+  flex-shrink: 0;
+  transition: transform 150ms;
+}
+
+.chevron[data-up="true"] {
+  transform: rotate(180deg);
+}
+
+.grid-row {
+  border-bottom: 1px solid var(--rule);
+}
+
+.row-line {
+  width: 100%;
+  padding: 10px 0;
+  text-align: left;
+  font-size: 16px;
+}
+
+.cell-brand {
+  font-weight: 700;
+}
+
+.cell-country,
+.cell-region,
+.cell-year {
+  font-variant-numeric: tabular-nums;
+}
+
+.cell-notes {
+  color: var(--graphite-soft);
+}
+
+.sub {
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--graphite-soft);
+}
+
+.closed {
+  color: var(--closed);
+}
+
+.cell-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  min-width: 0;
+}
+
+.cell-links a {
+  overflow-wrap: anywhere;
+}
+
+/* Brand rows: brand, then one line per region it is currently made for */
+
+.brand-row {
+  display: grid;
+  grid-template-columns: var(--columns);
+  gap: 0 16px;
+  align-items: baseline;
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.lines,
+.line,
+.earlier {
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: baseline;
+}
+
+.lines {
+  grid-column: 2 / -1;
+  row-gap: 8px;
+}
+
+.line,
+.earlier {
+  grid-column: 1 / -1;
+}
+
+.earlier {
+  row-gap: 6px;
+  padding-left: 0;
+  font-size: 15px;
+  color: var(--graphite-soft);
+}
+
+.earlier .cell-region,
+.earlier .cell-year,
+.earlier .shop-name {
+  color: var(--graphite-soft);
+  font-weight: 400;
+}
+
+.cell-region[data-all="true"] {
+  color: var(--graphite-soft);
+}
+
+.cell-region {
+  color: var(--graphite);
+}
+
+.shop-name {
+  font-weight: 600;
+}
+
+.line[data-closed="true"] .shop-name {
+  color: var(--graphite-soft);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.closed-note {
+  display: block;
+  font-size: 14px;
+  color: var(--graphite-soft);
+}
+
+.earlier-toggle {
+  grid-column: 1 / -1;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: var(--graphite-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.earlier-toggle:hover {
+  color: var(--graphite);
+}
+
+.empty {
+  padding: 40px 0;
+  color: var(--graphite-soft);
+}
+
+/* Footer */
+
+.footer {
+  margin-top: 72px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  gap: 10px;
+  max-width: 44em;
+  font-size: 14px;
+  color: var(--graphite-soft);
+}
+
+/* Narrow screens: rows reflow into two lines */
+
+@media (max-width: 760px) {
+  /* Four stacked fields would cover half the screen if they stuck. */
+  .toolbar {
+    position: static;
+  }
+
+  .tab {
+    font-stretch: 100%;
+  }
+
+  .tab {
+    font-size: 16px;
+  }
+
+  .field {
+    max-width: none;
+  }
+
+  .grid-head {
+    display: none;
+  }
+
+  /* The header carries the top rule on wide screens; it's hidden here. */
+  .grid {
+    border-top: 2px solid var(--graphite);
+  }
+
+  .row-line {
+    grid-template-columns: 1fr auto;
+    gap: 2px 12px;
+  }
+
+  .row-line .cell-brand {
+    grid-column: 1;
+  }
+
+  .row-line .cell-country {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+    color: var(--graphite-soft);
+  }
+
+  .row-line > .cell-year,
+  .row-line .cell-notes,
+  .row-line .cell-links {
+    grid-column: 1 / -1;
+    font-size: 15px;
+  }
+
+  .row-line .cell-year:empty,
+  .row-line .cell-notes:empty {
+    display: none;
+  }
+
+  .brand-row {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+  }
+
+  .lines,
+  .line,
+  .earlier {
+    grid-template-columns: 6.5rem 1fr auto;
+    column-gap: 10px;
+  }
+
+  .lines {
+    grid-column: 1;
+  }
+
+  .line .cell-region {
+    font-size: 14px;
+  }
+
+  .line .cell-country {
+    text-align: right;
+    color: var(--graphite-soft);
+  }
+
+  .line .cell-year,
+  .line .cell-notes {
+    grid-column: 2 / -1;
+    font-size: 15px;
+    color: var(--graphite-soft);
+  }
+
+  .line .cell-year:empty,
+  .line .cell-notes:empty {
+    display: none;
+  }
+}
